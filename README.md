@@ -1,2 +1,6 @@
-# jenkins2
-A docker Jenkins 2 instances 
+# jenkins
+A docker Jenkins instances
+```
+u: admin
+p: admin 
+```
