@@ -1,23 +1,24 @@
 # Docker Jenkins instances
 ## Building Jenkins
 ```
-docker build -t jenkinsINdocker .
+docker build -t jenkins-in-docker .
 ```
 ## Running Jenkins
 ```
 docker run -itd \
 -p 8080:8080 \
--v /var/log/jenkins:/var/log/jenkins \
+-v $pwd:/var/lib/jenkins \
+-v /var/run/docker.sock:/var/run/docker.sock \
 --name jenkins \
--h jenkins
+-h jenkins \
 jenkins-in-docker
 ```
 ## Accessing jenkins
 
 http://localhost:8080
 
-## Credentials
+### Credentials
 ```
 u: admin
-p: admin 
+p: admin
 ```
