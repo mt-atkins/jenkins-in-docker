@@ -5,7 +5,7 @@ docker build -t jenkins-in-docker .
 ```
 ## Running Jenkins
 ```
-docker run -itd \
+docker run -[ it | d ] \
 -p 8080:8080 \
 -v $pwd:/var/lib/jenkins \
 -v /var/run/docker.sock:/var/run/docker.sock \
