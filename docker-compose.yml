@@ -1,1 +1,26 @@
-docker run --restart=always -d -p 80:8080 -v $PWD:/var/lib/jenkins -v /var/run/docker.sock:/var/run/docker.sock -v $PWD/jenkins_home:/var/jenkins_home --name jenkins -h jenkins jenkins-in-docker
+version: "3.3"
+services:
+  jenkins-in-docker:
+    image: jenkins-in-docker
+    build: .
+    volumes:
+      - $PWD:/var/lib/jenkins
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $PWD/jenkins_home:/var/jenkins_home
+    hostname: jenkins
+    ports:
+      - 80:8080
+    networks:
+      - jenkins_net
+    restart: always
+  sonar:
+    image: sonarqube
+    hostname: sonar
+    ports:
+      - 9000:9000
+      - 9092:9092
+    restart: always
+    networks:
+      - jenkins_net
+networks:
+    jenkins_net:
