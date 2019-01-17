@@ -1,5 +1,5 @@
 # escape=\
-FROM jenkins/jenkins:lts
+FROM jenkins:docker
 USER root
 RUN apt-get update
 RUN apt-get install -y \
