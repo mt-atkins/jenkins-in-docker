@@ -1,4 +1,15 @@
 # Docker
+- task: aquasecScanner@4
+  inputs:
+    image: 'accusoft/prizmdoc-editor:latest'
+    scanType: 'dockerarchive'
+    register: false
+    hideBase: false
+    showNegligible: false
+    windowsScannerVersion: '4.2.0'
+    registry: 'accusoft/prizmdoc-editor:latest'
+    connection: 'aqua-eks-morgan'
+    caCertificates: true
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
