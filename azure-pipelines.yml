@@ -1,25 +1,24 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+# # Docker
+# # Build a Docker image
+# # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-trigger:
-- master
+# trigger:
+# - master
 
-resources:
-- repo: self
+# resources:
+# - repo: self
 
-variables:
-  tag: '$(Build.BuildId)'
+# variables:
+#   tag: '$(Build.BuildId)'
 
-stages:
-- stage: Build
-  displayName: Build image
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
+# stages:
+# - stage: Build
+#   displayName: Build image
+#   jobs:
+#   - job: Build
+#     displayName: Build
+#     pool:
+#       vmImage: ubuntu-latest
     # - task: Docker@2
     #   displayName: Build an image
     #   inputs:
@@ -27,14 +26,15 @@ stages:
     #     dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
     #     tags: |
     #       $(tag)
-    - task: aquasecScanner@4
-      inputs:
-        image: 'accusoft/prizmdoc-editor:latest'
-        scanType: 'dockerarchive'
-        register: false
-        hideBase: false
-        showNegligible: false
-        windowsScannerVersion: '4.2.0'
-        registry: 'accusoft/prizmdoc-editor:latest'
-        connection: 'aqua-eks-morgan'
-        caCertificates: true
+steps:
+  - task: aquasecScanner@4
+    inputs:
+      image: 'accusoft/prizmdoc-editor:latest'
+      scanType: 'dockerarchive'
+      register: false
+      hideBase: false
+      showNegligible: false
+      windowsScannerVersion: '4.2.0'
+      registry: 'accusoft/prizmdoc-editor:latest'
+      connection: 'aqua-eks-morgan'
+      caCertificates: true
